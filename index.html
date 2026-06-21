@@ -632,6 +632,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <script>
 // LOADER
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),600)})
+setTimeout(()=>{const l=document.getElementById('loader');if(l&&!l.classList.contains('done'))l.classList.add('done')},5000)
 
 // CURSOR
 const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing')
