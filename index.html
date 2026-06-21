@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PixelPerfect Studio — Web Design Artistry</title>
+<title>PixelPerfect Studio - Web Design Artistry</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -63,8 +63,8 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 @keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.7;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.05;margin-bottom:1.5rem;font-weight:700;opacity:0;animation:fadeSlideUp .8s .4s forwards}
 .hero-title .gradient-text{background:linear-gradient(135deg,#a855f7 0%,#3b82f6 40%,#fbbf24 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-title .typewriter{display:inline-flex;align-items:center;color:#fbbf24;min-width:1ch}
-.hero-title .typewriter .cursor{display:inline-block;width:3px;height:1.1em;background:#fbbf24;margin-left:4px;animation:blink .75s step-end infinite;vertical-align:baseline;border-radius:1px}
+.hero-title .typewriter{display:inline-block;color:#fbbf24;min-width:2ch;min-height:1.1em;line-height:1.1;vertical-align:baseline}
+.hero-title .typewriter .cursor{display:inline-block;width:3px;height:1em;background:#fbbf24;margin-left:3px;animation:blink .75s step-end infinite;vertical-align:middle;border-radius:1px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-sub{font-size:clamp(1rem,1.3vw,1.2rem);color:rgba(226,232,240,.65);line-height:1.8;max-width:520px;margin-bottom:2.5rem;opacity:0;animation:fadeSlideUp .8s .6s forwards}
 .hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:fadeSlideUp .8s .8s forwards}
@@ -132,57 +132,92 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .showreel-card:hover .preview-grid .cell{background:rgba(168,85,247,.06)}
 .showreel-card:hover .preview-grid .cell:nth-child(odd){background:rgba(59,130,246,.04)}
 
-/* SHOWREEL MODAL */
+/* SHOWREEL MODAL (mini-site + annotations) */
 .modal-overlay{position:fixed;inset:0;z-index:90000;background:rgba(15,15,26,.92);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .5s cubic-bezier(.22,1,.36,1)}
 .modal-overlay.open{opacity:1;visibility:visible}
-.modal{position:relative;width:min(92vw,1200px);max-height:90vh;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transform:scale(.9) translateY(30px);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.modal{position:relative;width:min(92vw,1200px);height:88vh;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transform:scale(.92) translateY(30px);transition:transform .5s cubic-bezier(.22,1,.36,1)}
 .modal-overlay.open .modal{transform:scale(1) translateY(0)}
-.modal-close{position:absolute;top:1.2rem;right:1.2rem;z-index:10;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.06);color:#e2e8f0;font-size:1.3rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
-.modal-close:hover{background:rgba(255,255,255,.12);transform:rotate(90deg)}
-.modal-preview{position:relative;flex:1;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.modal-preview .mockup{position:relative;width:80%;max-width:700px;aspect-ratio:16/10;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
-.modal-preview .mockup-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;transition:opacity .5s,transform .5s}
-.modal-preview .mockup-screen .ms-icon{font-size:3rem;margin-bottom:1rem}
-.modal-preview .mockup-screen h4{font-size:1.4rem;font-weight:600;margin-bottom:.4rem}
-.modal-preview .mockup-screen p{font-size:.85rem;color:rgba(226,232,240,.55);max-width:300px;text-align:center}
-.modal-preview .mockup-nav{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:5}
-.modal-preview .mockup-nav .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
-.modal-preview .mockup-nav .dot.active{background:#a855f7;box-shadow:0 0 12px rgba(168,85,247,.5);width:24px;border-radius:4px}
-.modal-preview .mockup-nav .dot:hover{background:rgba(168,85,247,.5)}
-.modal-info{padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.modal-info .mi-left{display:flex;flex-direction:column;gap:.2rem}
-.modal-info .mi-left h3{font-size:1.2rem;font-weight:600}
-.modal-info .mi-left .mi-tag{display:inline-block;width:fit-content;padding:.2rem .8rem;border-radius:50px;font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
-.modal-info .mi-left .mi-tag.mt-design{background:rgba(168,85,247,.2);color:#a855f7;border:1px solid rgba(168,85,247,.2)}
-.modal-info .mi-left .mi-tag.mt-dev{background:rgba(59,130,246,.2);color:#3b82f6;border:1px solid rgba(59,130,246,.2)}
-.modal-info .mi-left .mi-tag.mt-brand{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.15)}
-.modal-info .mi-left .mi-desc{font-size:.8rem;color:rgba(226,232,240,.5)}
-.modal-info .mi-actions{display:flex;gap:.8rem}
-.modal-info .mi-actions .mi-btn{padding:.55rem 1.4rem;border-radius:50px;border:none;font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
-.modal-info .mi-actions .mi-btn.mib-primary{background:linear-gradient(135deg,#a855f7,#3b82f6);color:#fff}
-.modal-info .mi-actions .mi-btn.mib-primary:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(168,85,247,.35)}
-.modal-info .mi-actions .mi-btn.mib-outline{background:transparent;color:rgba(226,232,240,.7);border:1px solid rgba(255,255,255,.1)}
-.modal-info .mi-actions .mi-btn.mib-outline:hover{background:rgba(255,255,255,.05);color:#fff}
-.modal-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.06);color:#e2e8f0;font-size:1.2rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.modal-arrow:hover{background:rgba(168,85,247,.25)}
-.modal-arrow.prev{left:1.2rem}
-.modal-arrow.next{right:1.2rem}
-.mp-grad-1{background:linear-gradient(135deg,#1a0533,#0d1117)}
-.mp-grad-2{background:linear-gradient(135deg,#052e4a,#0d1117)}
-.mp-grad-3{background:linear-gradient(135deg,#332b05,#0d1117)}
-.mp-grad-4{background:linear-gradient(135deg,#1a0533,#0d1117)}
-.mp-grad-5{background:linear-gradient(135deg,#052e4a,#0d1117)}
-.mp-grad-6{background:linear-gradient(135deg,#332b05,#0d1117)}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:50;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.4);color:#e2e8f0;font-size:1.2rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal-close:hover{background:rgba(168,85,247,.3);transform:rotate(90deg)}
+/* mini-site scroll container */
+.modal-site-wrap{position:relative;flex:1;overflow:hidden}
+.modal-site-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.modal-site-scroll::-webkit-scrollbar{width:4px}
+.modal-site-scroll::-webkit-scrollbar-track{background:transparent}
+.modal-site-scroll::-webkit-scrollbar-thumb{background:rgba(168,85,247,.3);border-radius:2px}
+/* mini-site inner page */
+.mini-site{min-height:100%;display:flex;flex-direction:column}
+.ms-nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(15,15,26,.5)}
+.ms-nav .ms-logo{font-size:1rem;font-weight:700;letter-spacing:-.3px}
+.ms-nav .ms-links{display:flex;gap:1.5rem;list-style:none}
+.ms-nav .ms-links a{text-decoration:none;color:rgba(226,232,240,.5);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;transition:color .3s}
+.ms-nav .ms-links a:hover{color:#e2e8f0}
+.ms-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem 3rem;position:relative}
+.ms-hero h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;margin-bottom:.8rem}
+.ms-hero p{font-size:1rem;color:rgba(226,232,240,.5);max-width:500px;margin-bottom:2rem}
+.ms-hero .ms-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.8rem;border-radius:50px;border:none;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;background:linear-gradient(135deg,#a855f7,#3b82f6);color:#fff}
+.ms-hero .ms-cta:hover{transform:scale(1.04);box-shadow:0 8px 30px rgba(168,85,247,.35)}
+.ms-features{padding:1rem 2.5rem 3rem;flex:1}
+.ms-features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
+.ms-feature-card{position:relative;padding:1.8rem;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);transition:all .4s;overflow:visible}
+.ms-feature-card:hover{transform:translateY(-4px);border-color:rgba(168,85,247,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.ms-feature-card .mf-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+.ms-feature-card h4{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+.ms-feature-card p{font-size:.82rem;color:rgba(226,232,240,.5);line-height:1.6}
+.ms-footer{text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,.05);font-size:.75rem;color:rgba(226,232,240,.25)}
+/* project nav arrows */
+.modal-proj-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:30;width:40px;height:40px;border-radius:50%;border:none;background:rgba(0,0,0,.4);color:#e2e8f0;font-size:1.1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal-proj-arrow:hover{background:rgba(168,85,247,.3)}
+.modal-proj-arrow.prev{left:.8rem}
+.modal-proj-arrow.next{right:.8rem}
+/* feature annotations */
+.annotation{position:absolute;z-index:25;pointer-events:none;opacity:0;transition:opacity .6s,transform .5s cubic-bezier(.22,1,.36,1);transform:translateY(12px);max-width:260px}
+.annotation.visible{opacity:1;transform:translateY(0)}
+.annotation-inner{display:flex;align-items:flex-start;gap:10px;background:rgba(15,15,26,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(168,85,247,.2);border-radius:12px;padding:10px 14px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.annotation-inner .adot{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:#a855f7;margin-top:4px;box-shadow:0 0 12px rgba(168,85,247,.5)}
+.annotation-inner .atext{font-size:.75rem;line-height:1.5;color:rgba(226,232,240,.8)}
+.annotation .aline{position:absolute;width:1px;background:linear-gradient(180deg,rgba(168,85,247,.3),transparent)}
+.annotation.anno-right .aline{right:100%;top:50%;height:40px}
+.annotation.anno-left .aline{left:100%;top:50%;height:40px}
+.annotation.anno-top .aline{bottom:100%;left:50%;width:1px;height:30px}
+/* annotation positioning helpers */
+.anno-right{right:2.5rem;top:40%}
+.anno-left{left:2.5rem;top:50%}
+.anno-top{left:50%;top:2rem;transform:translateX(-50%) translateY(12px)}
+.anno-top.visible{transform:translateX(-50%) translateY(0)}
+.anno-br{bottom:6rem;right:2.5rem;top:auto}
+.anno-bl{bottom:6rem;left:2.5rem;top:auto}
+/* modal info bar */
+.modal-info-bar{display:flex;justify-content:space-between;align-items:center;padding:.8rem 2.5rem;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);flex-shrink:0}
+.modal-info-bar .mib-left{display:flex;align-items:center;gap:.8rem}
+.modal-info-bar .mib-tag{display:inline-block;padding:.15rem .7rem;border-radius:50px;font-size:.6rem;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.modal-info-bar .mib-tag.mt-design{background:rgba(168,85,247,.2);color:#a855f7;border:1px solid rgba(168,85,247,.2)}
+.modal-info-bar .mib-tag.mt-dev{background:rgba(59,130,246,.2);color:#3b82f6;border:1px solid rgba(59,130,246,.2)}
+.modal-info-bar .mib-tag.mt-brand{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.15)}
+.modal-info-bar .mib-title{font-size:.9rem;font-weight:600}
+.modal-info-bar .mib-desc{font-size:.75rem;color:rgba(226,232,240,.4)}
+.modal-info-bar .mib-actions{display:flex;gap:.6rem}
+.modal-info-bar .mib-btn{padding:.45rem 1.2rem;border-radius:50px;border:none;font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.modal-info-bar .mib-btn.mib-primary{background:linear-gradient(135deg,#a855f7,#3b82f6);color:#fff}
+.modal-info-bar .mib-btn.mib-primary:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(168,85,247,.3)}
+.modal-info-bar .mib-btn.mib-outline{background:transparent;color:rgba(226,232,240,.6);border:1px solid rgba(255,255,255,.08)}
+.modal-info-bar .mib-btn.mib-outline:hover{background:rgba(255,255,255,.05);color:#fff}
+.modal-info-bar .mib-counter{font-size:.7rem;color:rgba(226,232,240,.25);font-family:'JetBrains Mono',monospace}
 
 @media(max-width:768px){
-.modal-preview{min-height:260px}
-.modal-preview .mockup{width:92%}
-.modal-info{padding:1rem 1.5rem;flex-direction:column;align-items:flex-start}
-.modal-info .mi-actions{width:100%}
-.modal-info .mi-actions .mi-btn{flex:1;justify-content:center}
-.modal-arrow{width:36px;height:36px;font-size:1rem}
-.modal-arrow.prev{left:.6rem}
-.modal-arrow.next{right:.6rem}
+.ms-nav{padding:.7rem 1.2rem}
+.ms-nav .ms-links{display:none}
+.ms-hero{padding:2.5rem 1.2rem 2rem}
+.ms-features{padding:.5rem 1.2rem 2rem}
+.ms-features-grid{grid-template-columns:1fr}
+.annotation{display:none}
+.modal{height:92vh;width:96vw}
+.modal-info-bar{padding:.6rem 1.2rem;flex-wrap:wrap;gap:.5rem}
+.modal-info-bar .mib-actions{width:100%}
+.modal-info-bar .mib-actions .mib-btn{flex:1;justify-content:center}
+.modal-proj-arrow{width:34px;height:34px;font-size:.9rem}
+.modal-proj-arrow.prev{left:.4rem}
+.modal-proj-arrow.next{right:.4rem}
 }
 
 /* SKILLS */
@@ -313,7 +348,7 @@ section{padding:4rem 1.5rem}
 Crafting <span class="gradient-text">Digital</span><br>
 <span class="typewriter"><span id="twText">Experiences</span><span class="cursor"></span></span>
 </h1>
-<p class="hero-sub">I design and build boundary-pushing websites that blend stunning visuals with flawless performance. Every pixel, every interaction — meticulously crafted.</p>
+<p class="hero-sub">I design and build boundary-pushing websites that blend stunning visuals with flawless performance. Every pixel, every interaction - meticulously crafted.</p>
 <div class="hero-actions">
 <a href="#contact" class="btn btn-primary">Start a Project ✦</a>
 <a href="#showreel" class="btn btn-outline">View My Work →</a>
@@ -343,7 +378,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <section id="showreel">
 <p class="section-label reveal">Selected Work</p>
 <h2 class="section-title fade-up">Showreel</h2>
-<p class="section-subtitle fade-up delay-1" style="margin-bottom:3rem">Each project is a fusion of art and engineering — designed to captivate, built to perform.</p>
+<p class="section-subtitle fade-up delay-1" style="margin-bottom:3rem">Each project is a fusion of art and engineering - designed to captivate, built to perform.</p>
 <div class="showreel-grid">
 <div class="showreel-card card-grid-1 tilt-3d">
 <div class="overlay"></div>
@@ -433,7 +468,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <section id="services">
 <p class="section-label reveal" style="text-align:center">What I Offer</p>
 <h2 class="section-title fade-up" style="text-align:center">Full-Spectrum Design & Development</h2>
-<p class="section-subtitle fade-up delay-1" style="margin:0 auto 3rem;text-align:center">From concept to launch — every service engineered to make your brand unforgettable.</p>
+<p class="section-subtitle fade-up delay-1" style="margin:0 auto 3rem;text-align:center">From concept to launch - every service engineered to make your brand unforgettable.</p>
 <div class="services-grid">
 <div class="service-card tilt-3d fade-up" style="--accent:#a855f7">
 <span class="icon">✦</span>
@@ -450,7 +485,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <div class="service-card tilt-3d fade-up delay-2" style="--accent:#fbbf24">
 <span class="icon">●</span>
 <h3>Brand Identity</h3>
-<p>Strategic branding that tells your story — logos, color systems, typography, and visual languages that resonate.</p>
+<p>Strategic branding that tells your story - logos, color systems, typography, and visual languages that resonate.</p>
 <span class="corner">→</span>
 </div>
 <div class="service-card tilt-3d fade-up delay-3" style="--accent:#22d3ee">
@@ -479,7 +514,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <div class="contact-info fade-up">
 <p class="section-label reveal" style="margin-bottom:1.5rem">Let's Create</p>
 <h2>Ready to build something <span class="gradient-text">extraordinary</span>?</h2>
-<p>Every great project starts with a conversation. Whether you have a fully-baked idea or just a glimmer of inspiration, I'd love to hear from you. No fluff, no sales pitch — just great design.</p>
+<p>Every great project starts with a conversation. Whether you have a fully-baked idea or just a glimmer of inspiration, I'd love to hear from you. No fluff, no sales pitch - just great design.</p>
 <div class="contact-links">
 <a href="mailto:hello@pixelperfect.studio" class="contact-link"><span class="cl-icon">✉</span> hello@pixelperfect.studio</a>
 <a href="#" class="contact-link"><span class="cl-icon">✆</span> +1 (555) 123-4567</a>
@@ -498,37 +533,26 @@ Crafting <span class="gradient-text">Digital</span><br>
 <div class="modal-overlay" id="modalOverlay">
 <div class="modal">
 <button class="modal-close" id="modalClose">✕</button>
-<div class="modal-preview" id="modalPreview">
-<button class="modal-arrow prev" id="modalPrev">‹</button>
-<button class="modal-arrow next" id="modalNext">›</button>
-<div class="mockup" id="modalMockup">
-<div class="mockup-screen" data-screen="0">
-<span class="ms-icon">✦</span>
-<h4>Landing Page Concept</h4>
-<p>Full-bleed hero with animated gradient overlays and micro-interactions</p>
+<button class="modal-proj-arrow prev" id="modalPrev">‹</button>
+<button class="modal-proj-arrow next" id="modalNext">›</button>
+<div class="modal-site-wrap">
+<div class="modal-site-scroll" id="miniSiteScroll">
+<div class="mini-site" id="miniSite"></div>
 </div>
-<div class="mockup-screen" data-screen="1" style="opacity:0;pointer-events:none">
-<span class="ms-icon">◆</span>
-<h4>Dashboard Interface</h4>
-<p>Data-rich analytics panel with real-time charts and collapsible modules</p>
+<div id="annotationsLayer"></div>
 </div>
-<div class="mockup-screen" data-screen="2" style="opacity:0;pointer-events:none">
-<span class="ms-icon">●</span>
-<h4>Mobile Experience</h4>
-<p>Responsive touch-first navigation with gesture-driven transitions</p>
-</div>
-<div class="mockup-nav" id="mockupNav"></div>
+<div class="modal-info-bar" id="modalInfoBar">
+<div class="mib-left">
+<span class="mib-tag" id="mibTag">Design</span>
+<div>
+<div class="mib-title" id="mibTitle">Nebula Dashboard</div>
+<div class="mib-desc" id="mibDesc">Data viz with real-time 3D graphs</div>
 </div>
 </div>
-<div class="modal-info">
-<div class="mi-left">
-<span class="mi-tag mt-design" id="modalTag">Design</span>
-<h3 id="modalTitle">Nebula Dashboard</h3>
-<span class="mi-desc" id="modalDesc">Data visualization with real-time 3D graphs</span>
-</div>
-<div class="mi-actions">
-<a href="#" class="mi-btn mib-outline">Preview Live ↗</a>
-<button class="mi-btn mib-primary">View Case Study →</button>
+<div class="mib-actions">
+<span class="mib-counter" id="mibCounter">1/6</span>
+<a href="#" class="mib-btn mib-outline">Live Demo ↗</a>
+<button class="mib-btn mib-primary">Case Study →</button>
 </div>
 </div>
 </div>
@@ -580,7 +604,7 @@ document.addEventListener('mousemove',e=>{orb.style.left=e.clientX+'px';orb.styl
 const words=['Experiences','Brands','Visions','Interfaces','Dreams'],twEl=document.getElementById('twText')
 let wi=0,ci=0,del=false,text=''
 function type(){const w=words[wi];if(!del){text=w.slice(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,2000);twEl.textContent=text;return}}else{text=w.slice(0,ci-1);ci--;if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,500);twEl.textContent=text;return}}
-twEl.textContent=text||'\u200B';setTimeout(type,del?40:80)}
+twEl.textContent=text;setTimeout(type,del?40:80)}
 type()
 
 // SCROLL REVEAL
@@ -595,31 +619,46 @@ document.querySelectorAll('.skill-item').forEach(el=>skillObserver.observe(el))
 document.querySelectorAll('.tilt-3d').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,cx=r.width/2,cy=r.height/2;card.style.transform=`perspective(1000px) rotateX(${(y-cy)/20}deg) rotateY(${-(x-cx)/20}deg) scale3d(1.02,1.02,1.02)`})
 card.addEventListener('mouseleave',()=>card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)')})
 
-// SHOWREEL MODAL
-const modalData=[
-{tag:'Design',tagClass:'mt-design',title:'Nebula Dashboard',desc:'Data visualization with real-time 3D graphs',grad:'mp-grad-1',screens:[{icon:'✦',title:'Landing Page Concept',desc:'Full-bleed hero with animated gradient overlays and micro-interactions'},{icon:'◆',title:'Dashboard Interface',desc:'Data-rich analytics panel with real-time charts and collapsible modules'},{icon:'●',title:'Mobile Experience',desc:'Responsive touch-first navigation with gesture-driven transitions'}]},
-{tag:'Development',tagClass:'mt-dev',title:'Quantum E-Commerce',desc:'Headless storefront with sub-second loads',grad:'mp-grad-2',screens:[{icon:'◆',title:'Product Showcase',desc:'Dynamic grid layout with hover-driven 3D product rotations'},{icon:'●',title:'Checkout Flow',desc:'Streamlined multi-step checkout with progress visualization'},{icon:'✦',title:'Admin Panel',desc:'Real-time inventory management with drag-and-drop interface'}]},
-{tag:'Branding',tagClass:'mt-brand',title:'Prism Studios',desc:'Full brand identity & interactive portfolio',grad:'mp-grad-3',screens:[{icon:'●',title:'Brand Guidelines',desc:'Comprehensive design system with typography, color, and component specs'},{icon:'✦',title:'Portfolio Gallery',desc:'Masonry layout with parallax-scrolling project showcases'},{icon:'◆',title:'Interactive Resume',desc:'Scroll-driven narrative timeline with animated skill visualizations'}]},
-{tag:'Design',tagClass:'mt-design',title:'Cosmic Blog',desc:'Content platform with immersive animations',grad:'mp-grad-4',screens:[{icon:'✦',title:'Article Reader',desc:'Distraction-free reading mode with progress-driven animations'},{icon:'●',title:'Category Explorer',desc:'Visual content discovery with animated tag filtering'},{icon:'◆',title:'Author Dashboard',desc:'Analytics-focused dashboard with content performance metrics'}]},
-{tag:'Development',tagClass:'mt-dev',title:'Velocity SaaS',desc:'Web app with real-time collaboration',grad:'mp-grad-5',screens:[{icon:'◆',title:'Workspace View',desc:'Real-time collaborative editing with presence indicators'},{icon:'✦',title:'Project Timeline',desc:'Gantt-style project management with drag-to-schedule'},{icon:'●',title:'Team Chat',desc:'Threaded conversations with inline code snippets and file sharing'}]},
-{tag:'Branding',tagClass:'mt-brand',title:'Solstice Agency',desc:'Premium agency website with 3D elements',grad:'mp-grad-6',screens:[{icon:'●',title:'Home Page',desc:'Immersive WebGL hero with interactive 3D brand storytelling'},{icon:'◆',title:'Case Studies',desc:'Rich media document with scroll-triggered data visualizations'},{icon:'✦',title:'Contact Page',desc:'Interactive map with animated form transitions and 3D elements'}]}
+// SHOWREEL MODAL (mini-site with scroll annotations)
+const projData=[
+{tag:'Design',tagClass:'mt-design',title:'Nebula Dashboard',desc:'Data viz with real-time 3D graphs',heroTitle:'Nebula Dashboard',heroSub:'Enterprise data visualization platform with interactive 3D graphs and real-time collaboration',features:[{icon:'✦',title:'Interactive 3D Graphs',desc:'WebGL-powered charts that render 10K+ data points at 60fps with camera orbit controls and custom theming.'},{icon:'◆',title:'Smart Query Bar',desc:'Natural language query builder with auto-suggest, saved searches, and one-click export to any format.'},{icon:'●',title:'Team Workspace',desc:'Real-time collaborative annotations with threaded comments, version history, and role-based access.'}],annotations:[{text:'WebGL engine renders 10K+ points at 60fps',pos:'anno-right',target:0},{text:'AI predicts queries before you finish typing',pos:'anno-left',target:1},{text:'Threaded comments with real-time sync',pos:'anno-br',target:2}]},
+{tag:'Development',tagClass:'mt-dev',title:'Quantum E-Commerce',desc:'Headless storefront sub-second loads',heroTitle:'Quantum E-Commerce',heroSub:'Headless commerce platform engineered for speed, scalability, and conversion optimization',features:[{icon:'◆',title:'3D Product Viewer',desc:'Interactive 360-degree product rotation with zoom, AR preview, and customizable color/material switching.'},{icon:'●',title:'Smart Checkout',desc:'One-click checkout with saved payment profiles, real-time shipping estimates, and fraud detection.'},{icon:'✦',title:'Inventory AI',desc:'Predictive inventory management that forecasts demand, auto-reorders stock, and prevents overselling.'}],annotations:[{text:'360-degree viewer with AR mode and real-time material swap',pos:'anno-right',target:0},{text:'One-click checkout with fraud detection and live shipping',pos:'anno-left',target:1},{text:'AI predicts demand and auto-replenishes stock',pos:'anno-br',target:2}]},
+{tag:'Branding',tagClass:'mt-brand',title:'Prism Studios',desc:'Full brand identity & portfolio',heroTitle:'Prism Studios',heroSub:'Full-spectrum brand identity with an interactive portfolio that tells your story through motion',features:[{icon:'●',title:'Living Brand Guide',desc:'Dynamic design system with interactive color palettes, variable typography, and live component previews.'},{icon:'✦',title:'Masonry Portfolio',desc:'Fluid masonry gallery with parallax scroll, project filters, and full-screen case study overlays.'},{icon:'◆',title:'Scroll Narrative',desc:'Scroll-driven storytelling with animated infographics, progress-based reveals, and chapter markers.'}],annotations:[{text:'Live design system with interactive tokens and previews',pos:'anno-right',target:0},{text:'Fluid masonry with parallax and full-screen overlays',pos:'anno-left',target:1},{text:'Scroll-driven narrative with animated infographics',pos:'anno-br',target:2}]},
+{tag:'Design',tagClass:'mt-design',title:'Cosmic Blog',desc:'Content platform with animations',heroTitle:'Cosmic Blog',heroSub:'A content platform where every scroll, tap, and transition is designed for immersive reading',features:[{icon:'✦',title:'Immersive Reader',desc:'Distraction-free reading with kinetic typography, progress-driven animations, and ambient mode.'},{icon:'●',title:'Visual Explorer',desc:'Tag-based content discovery with animated card stacks, category orbits, and trending heatmaps.'},{icon:'◆',title:'Creator Dashboard',desc:'Analytics suite with content performance metrics, audience insights, and draft collaboration tools.'}],annotations:[{text:'Kinetic typography with ambient reader mode',pos:'anno-right',target:0},{text:'Animated card stacks with heatmap trends',pos:'anno-left',target:1},{text:'Performance analytics with audience insights',pos:'anno-br',target:2}]},
+{tag:'Development',tagClass:'mt-dev',title:'Velocity SaaS',desc:'Web app real-time collaboration',heroTitle:'Velocity SaaS',heroSub:'Real-time collaboration platform built for teams that move fast and demand zero latency',features:[{icon:'◆',title:'Live Workspace',desc:'Multi-user real-time editing with cursor presence, change highlights, and instant conflict resolution.'},{icon:'✦',title:'Project Timeline',desc:'Gantt-style project management with drag-to-schedule, milestone tracking, and dependency mapping.'},{icon:'●',title:'Team Hub',desc:'Integrated team communication with channels, threads, code snippets, and automated workflow triggers.'}],annotations:[{text:'Real-time multi-user editing with presence indicators',pos:'anno-right',target:0},{text:'Drag-to-schedule timeline with dependency mapping',pos:'anno-left',target:1},{text:'Integrated chat with code snippets and workflows',pos:'anno-br',target:2}]},
+{tag:'Branding',tagClass:'mt-brand',title:'Solstice Agency',desc:'Premium agency with 3D elements',heroTitle:'Solstice Agency',heroSub:'A premium agency brand brought to life with WebGL-powered storytelling and meticulous craft',features:[{icon:'●',title:'WebGL Hero',desc:'Immersive 3D brand experience with interactive particle systems, camera animation, and spatial audio.'},{icon:'◆',title:'Case Study Engine',desc:'Rich media document system with scroll-triggered data viz, video embeds, and interactive prototypes.'},{icon:'✦',title:'3D Contact',desc:'Interactive 3D map with animated form transitions, particle signatures, and real-time status indicators.'}],annotations:[{text:'Immersive WebGL hero with spatial audio',pos:'anno-right',target:0},{text:'Scroll-triggered case studies with live prototypes',pos:'anno-left',target:1},{text:'Interactive 3D contact form with particle signatures',pos:'anno-br',target:2}]}
 ]
-const modalOverlay=document.getElementById('modalOverlay'),modalClose=document.getElementById('modalClose'),modalPreview=document.getElementById('modalPreview'),modalMockup=document.getElementById('modalMockup'),mockupNav=document.getElementById('mockupNav'),modalTag=document.getElementById('modalTag'),modalTitle=document.getElementById('modalTitle'),modalDesc=document.getElementById('modalDesc'),modalPrev=document.getElementById('modalPrev'),modalNext=document.getElementById('modalNext')
-let curProject=0,curScreen=0
-function openModal(idx){curProject=idx;curScreen=0;renderModal();modalOverlay.classList.add('open');document.body.style.overflow='hidden'}
-function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow=''}
-function renderModal(){const d=modalData[curProject];modalTag.textContent=d.tag;modalTag.className='mi-tag '+d.tagClass;modalTitle.textContent=d.title;modalDesc.textContent=d.desc;modalPreview.className='modal-preview '+d.grad;const screens=d.screens
-mockupNav.innerHTML=screens.map((_,i)=>`<button class="dot${i===0?' active':''}" data-idx="${i}"></button>`).join('')
-document.querySelectorAll('.mockup-screen').forEach((el,i)=>{el.style.opacity=i===0?'1':'0';el.style.pointerEvents=i===0?'auto':'none';el.querySelector('.ms-icon').textContent=screens[i].icon;el.querySelector('h4').textContent=screens[i].title;el.querySelector('p').textContent=screens[i].desc})
-mockupNav.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',()=>goToScreen(parseInt(d.dataset.idx))))}
-function goToScreen(i){if(i===curScreen)return;const d=modalData[curProject];const prev=curScreen;curScreen=i
-document.querySelectorAll('.mockup-screen').forEach((el,j)=>{el.style.opacity=j===i?'1':'0';el.style.pointerEvents=j===i?'auto':'none';el.style.transform=j===i?'translateY(0) scale(1)':'translateY(20px) scale(.98)'})
-document.querySelectorAll('.mockup-nav .dot').forEach((d,j)=>d.classList.toggle('active',j===i))}
-modalPrev.addEventListener('click',()=>{const d=modalData[curProject];goToScreen((curScreen-1+d.screens.length)%d.screens.length)})
-modalNext.addEventListener('click',()=>{const d=modalData[curProject];goToScreen((curScreen+1)%d.screens.length)})
+const modalOverlay=document.getElementById('modalOverlay'),modalClose=document.getElementById('modalClose'),miniSite=document.getElementById('miniSite'),miniScroll=document.getElementById('miniSiteScroll'),annoLayer=document.getElementById('annotationsLayer'),mibTag=document.getElementById('mibTag'),mibTitle=document.getElementById('mibTitle'),mibDesc=document.getElementById('mibDesc'),mibCounter=document.getElementById('mibCounter'),modalPrev=document.getElementById('modalPrev'),modalNext=document.getElementById('modalNext')
+let curProject=0,annoObserver=null
+function openModal(idx){curProject=idx;renderMiniSite();modalOverlay.classList.add('open');document.body.style.overflow='hidden';setTimeout(setupAnnotations,200)}
+function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';if(annoObserver)annoObserver.disconnect()}
+function renderMiniSite(){const d=projData[curProject]
+mibTag.textContent=d.tag;mibTag.className='mib-tag '+d.tagClass;mibTitle.textContent=d.title;mibDesc.textContent=d.desc;mibCounter.textContent=(curProject+1)+'/'+projData.length
+miniSite.innerHTML=`
+<div class="ms-nav"><div class="ms-logo">${d.title}</div><ul class="ms-links">${['Home','Features','Pricing','Contact'].map(l=>`<li><a href="#">${l}</a></li>`).join('')}</ul></div>
+<div class="ms-hero"><h2>${d.heroTitle}</h2><p>${d.heroSub}</p><a href="#" class="ms-cta">Explore ${d.title} ✦</a></div>
+<div class="ms-features"><div class="ms-features-grid">${d.features.map((f,i)=>`<div class="ms-feature-card" data-fi="${i}"><span class="mf-icon">${f.icon}</span><h4>${f.title}</h4><p>${f.desc}</p></div>`).join('')}</div></div>
+<div class="ms-footer">${d.title} &copy; 2026. All rights reserved.</div>
+`
+const tagColors={Design:'#a855f7',Development:'#3b82f6',Branding:'#fbbf24'}
+const col=tagColors[d.tag]||'#a855f7'
+miniSite.querySelector('.ms-hero').style.background=`radial-gradient(ellipse at 50% 100%,${col}08,transparent 70%)`
+miniSite.querySelector('.ms-cta').style.background=`linear-gradient(135deg,${col},${col}cc)`
+miniScroll.scrollTop=0}
+function setupAnnotations(){const d=projData[curProject];if(annoObserver)annoObserver.disconnect()
+annoLayer.innerHTML=d.annotations.map((a,i)=>`<div class="annotation ${a.pos}" data-ai="${i}"><div class="annotation-inner"><span class="adot"></span><span class="atext">${a.text}</span></div></div>`).join('')
+const cards=miniSite.querySelectorAll('.ms-feature-card')
+if(!cards.length)return
+const annos=annoLayer.querySelectorAll('.annotation')
+annoObserver=new IntersectionObserver(entries=>{let visible=-1
+entries.forEach(e=>{if(e.isIntersecting){const idx=parseInt(e.target.dataset.fi);if(idx>visible)visible=idx}})
+annos.forEach((a,i)=>{a.classList.toggle('visible',i===visible)})},{root:miniScroll,threshold:.4})
+cards.forEach(c=>annoObserver.observe(c))}
+modalPrev.addEventListener('click',()=>{curProject=(curProject-1+projData.length)%projData.length;renderMiniSite();setTimeout(setupAnnotations,200)})
+modalNext.addEventListener('click',()=>{curProject=(curProject+1)%projData.length;renderMiniSite();setTimeout(setupAnnotations,200)})
 modalClose.addEventListener('click',closeModal)
 modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal()})
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='ArrowRight'){const d=modalData[curProject];if(d)goToScreen((curScreen+1)%d.screens.length)};if(e.key==='ArrowLeft'){const d=modalData[curProject];if(d)goToScreen((curScreen-1+d.screens.length)%d.screens.length)}})
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='ArrowRight'){curProject=(curProject+1)%projData.length;renderMiniSite();setTimeout(setupAnnotations,200)};if(e.key==='ArrowLeft'){curProject=(curProject-1+projData.length)%projData.length;renderMiniSite();setTimeout(setupAnnotations,200)}})
 document.querySelectorAll('.showreel-card').forEach((card,i)=>{card.addEventListener('click',()=>openModal(i))})
 
 // NAV HIDE/SHOW ON SCROLL
