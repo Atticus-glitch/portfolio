@@ -63,8 +63,8 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 @keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.7;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.05;margin-bottom:1.5rem;font-weight:700;opacity:0;animation:fadeSlideUp .8s .4s forwards}
 .hero-title .gradient-text{background:linear-gradient(135deg,#a855f7 0%,#3b82f6 40%,#fbbf24 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-title .typewriter{display:inline-block;position:relative;color:#fbbf24}
-.hero-title .typewriter::after{content:'|';position:absolute;right:-8px;top:2px;color:#fbbf24;animation:blink .75s step-end infinite;font-weight:300}
+.hero-title .typewriter{display:inline-flex;align-items:center;color:#fbbf24;min-width:1ch}
+.hero-title .typewriter .cursor{display:inline-block;width:3px;height:1.1em;background:#fbbf24;margin-left:4px;animation:blink .75s step-end infinite;vertical-align:baseline;border-radius:1px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-sub{font-size:clamp(1rem,1.3vw,1.2rem);color:rgba(226,232,240,.65);line-height:1.8;max-width:520px;margin-bottom:2.5rem;opacity:0;animation:fadeSlideUp .8s .6s forwards}
 .hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:fadeSlideUp .8s .8s forwards}
@@ -132,6 +132,59 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .showreel-card:hover .preview-grid .cell{background:rgba(168,85,247,.06)}
 .showreel-card:hover .preview-grid .cell:nth-child(odd){background:rgba(59,130,246,.04)}
 
+/* SHOWREEL MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:90000;background:rgba(15,15,26,.92);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{position:relative;width:min(92vw,1200px);max-height:90vh;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transform:scale(.9) translateY(30px);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;z-index:10;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.06);color:#e2e8f0;font-size:1.3rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:rgba(255,255,255,.12);transform:rotate(90deg)}
+.modal-preview{position:relative;flex:1;min-height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-preview .mockup{position:relative;width:80%;max-width:700px;aspect-ratio:16/10;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+.modal-preview .mockup-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;transition:opacity .5s,transform .5s}
+.modal-preview .mockup-screen .ms-icon{font-size:3rem;margin-bottom:1rem}
+.modal-preview .mockup-screen h4{font-size:1.4rem;font-weight:600;margin-bottom:.4rem}
+.modal-preview .mockup-screen p{font-size:.85rem;color:rgba(226,232,240,.55);max-width:300px;text-align:center}
+.modal-preview .mockup-nav{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:5}
+.modal-preview .mockup-nav .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
+.modal-preview .mockup-nav .dot.active{background:#a855f7;box-shadow:0 0 12px rgba(168,85,247,.5);width:24px;border-radius:4px}
+.modal-preview .mockup-nav .dot:hover{background:rgba(168,85,247,.5)}
+.modal-info{padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.modal-info .mi-left{display:flex;flex-direction:column;gap:.2rem}
+.modal-info .mi-left h3{font-size:1.2rem;font-weight:600}
+.modal-info .mi-left .mi-tag{display:inline-block;width:fit-content;padding:.2rem .8rem;border-radius:50px;font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
+.modal-info .mi-left .mi-tag.mt-design{background:rgba(168,85,247,.2);color:#a855f7;border:1px solid rgba(168,85,247,.2)}
+.modal-info .mi-left .mi-tag.mt-dev{background:rgba(59,130,246,.2);color:#3b82f6;border:1px solid rgba(59,130,246,.2)}
+.modal-info .mi-left .mi-tag.mt-brand{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.15)}
+.modal-info .mi-left .mi-desc{font-size:.8rem;color:rgba(226,232,240,.5)}
+.modal-info .mi-actions{display:flex;gap:.8rem}
+.modal-info .mi-actions .mi-btn{padding:.55rem 1.4rem;border-radius:50px;border:none;font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.modal-info .mi-actions .mi-btn.mib-primary{background:linear-gradient(135deg,#a855f7,#3b82f6);color:#fff}
+.modal-info .mi-actions .mi-btn.mib-primary:hover{transform:scale(1.04);box-shadow:0 6px 24px rgba(168,85,247,.35)}
+.modal-info .mi-actions .mi-btn.mib-outline{background:transparent;color:rgba(226,232,240,.7);border:1px solid rgba(255,255,255,.1)}
+.modal-info .mi-actions .mi-btn.mib-outline:hover{background:rgba(255,255,255,.05);color:#fff}
+.modal-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.06);color:#e2e8f0;font-size:1.2rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal-arrow:hover{background:rgba(168,85,247,.25)}
+.modal-arrow.prev{left:1.2rem}
+.modal-arrow.next{right:1.2rem}
+.mp-grad-1{background:linear-gradient(135deg,#1a0533,#0d1117)}
+.mp-grad-2{background:linear-gradient(135deg,#052e4a,#0d1117)}
+.mp-grad-3{background:linear-gradient(135deg,#332b05,#0d1117)}
+.mp-grad-4{background:linear-gradient(135deg,#1a0533,#0d1117)}
+.mp-grad-5{background:linear-gradient(135deg,#052e4a,#0d1117)}
+.mp-grad-6{background:linear-gradient(135deg,#332b05,#0d1117)}
+
+@media(max-width:768px){
+.modal-preview{min-height:260px}
+.modal-preview .mockup{width:92%}
+.modal-info{padding:1rem 1.5rem;flex-direction:column;align-items:flex-start}
+.modal-info .mi-actions{width:100%}
+.modal-info .mi-actions .mi-btn{flex:1;justify-content:center}
+.modal-arrow{width:36px;height:36px;font-size:1rem}
+.modal-arrow.prev{left:.6rem}
+.modal-arrow.next{right:.6rem}
+}
+
 /* SKILLS */
 #skills{background:#0f0f1a;position:relative}
 #skills::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,.3),transparent)}
@@ -147,16 +200,6 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .skill-item .bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--glow-color,#a855f7),var(--glow-color2,#3b82f6));width:0;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
 .skill-item .bar-fill.filled{width:var(--level)}.skill-item .pct{font-size:.7rem;color:var(--glow-color);position:relative;z-index:1;font-family:'JetBrains Mono',monospace}
 
-/* STATS */
-#stats{min-height:50vh;padding:4rem 3rem;background:linear-gradient(180deg,#0f0f1a,#0a0a14);position:relative;overflow:hidden}
-#stats::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,.3),transparent)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:0 auto;width:100%;text-align:center}
-.stat-item{position:relative;padding:2rem}
-.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:linear-gradient(180deg,transparent,rgba(168,85,247,.2),transparent)}
-.stat-number{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:700;background:linear-gradient(135deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.stat-number .plus{font-size:clamp(1.5rem,2vw,2rem);vertical-align:super}
-.stat-label{font-size:.85rem;color:rgba(226,232,240,.5);margin-top:.5rem;text-transform:uppercase;letter-spacing:2px}
-
 /* SERVICES */
 #services{background:#0f0f1a;position:relative;overflow:hidden}
 #services::before{content:'';position:absolute;top:-30%;right:-20%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(168,85,247,.05),transparent 70%);pointer-events:none}
@@ -170,19 +213,6 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .service-card p{font-size:.92rem;color:rgba(226,232,240,.55);line-height:1.7}
 .service-card .corner{position:absolute;bottom:1.5rem;right:1.5rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(168,85,247,.1);color:#a855f7;font-size:.9rem;transition:all .4s}
 .service-card:hover .corner{background:rgba(168,85,247,.25);transform:rotate(45deg)}
-
-/* TESTIMONIALS */
-#testimonials{min-height:60vh;background:linear-gradient(180deg,#0f0f1a,#0a0a14);position:relative}
-.testimonials-track{display:flex;gap:2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem 0 3rem;scrollbar-width:none;-ms-overflow-style:none}
-.testimonials-track::-webkit-scrollbar{display:none}
-.testimonial-card{min-width:380px;padding:2.2rem;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);scroll-snap-align:start;transition:all .4s}
-.testimonial-card:hover{background:rgba(255,255,255,.06);border-color:rgba(168,85,247,.15);transform:translateY(-4px)}
-.testimonial-card .stars{color:#fbbf24;font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
-.testimonial-card blockquote{font-size:.95rem;line-height:1.7;color:rgba(226,232,240,.7);margin-bottom:1.5rem;font-style:italic}
-.testimonial-card .author{display:flex;align-items:center;gap:.8rem}
-.testimonial-card .author .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff}
-.testimonial-card .author .info .name{font-size:.9rem;font-weight:600}
-.testimonial-card .author .info .role{font-size:.75rem;color:rgba(226,232,240,.4)}
 
 /* CONTACT */
 #contact{position:relative;overflow:hidden}
@@ -232,8 +262,6 @@ footer .footer-links a:hover{color:#a855f7}
 .hero-actions{justify-content:center}
 .hero-visual{order:-1;min-height:280px}
 .hero-shape{width:280px;height:280px}
-.stats-grid{grid-template-columns:repeat(2,1fr)}
-.stat-item:nth-child(2)::after{display:none}
 .contact-grid{grid-template-columns:1fr}
 .form-row{grid-template-columns:1fr}
 .floating-cards .fc{width:45px;height:45px;font-size:1.2rem}
@@ -243,15 +271,11 @@ nav{padding:1rem 1.5rem}
 .nav-links{display:none}
 .mobile-toggle{display:flex}
 section{padding:4rem 1.5rem}
-.stats-grid{grid-template-columns:1fr 1fr;gap:1rem}
-.stat-item::after{display:none!important}
-.testimonial-card{min-width:300px}
 .services-grid{grid-template-columns:1fr}
 .skills-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:480px){
 .hero-title{font-size:2.2rem}
-.stats-grid{grid-template-columns:1fr;gap:.5rem}
 }
 </style>
 </head>
@@ -269,7 +293,6 @@ section{padding:4rem 1.5rem}
 <li><a href="#showreel">Work</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#services">Services</a></li>
-<li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
 </ul>
 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -279,7 +302,6 @@ section{padding:4rem 1.5rem}
 <a href="#showreel" class="mo-link">Work</a>
 <a href="#skills" class="mo-link">Skills</a>
 <a href="#services" class="mo-link">Services</a>
-<a href="#testimonials" class="mo-link">Testimonials</a>
 <a href="#contact" class="mo-link">Contact</a>
 </div>
 
@@ -289,7 +311,7 @@ section{padding:4rem 1.5rem}
 <div class="hero-badge"><span class="dot"></span> Available for Projects</div>
 <h1 class="hero-title">
 Crafting <span class="gradient-text">Digital</span><br>
-<span class="typewriter" id="typewriterText">Experiences</span>
+<span class="typewriter"><span id="twText">Experiences</span><span class="cursor"></span></span>
 </h1>
 <p class="hero-sub">I design and build boundary-pushing websites that blend stunning visuals with flawless performance. Every pixel, every interaction — meticulously crafted.</p>
 <div class="hero-actions">
@@ -408,15 +430,6 @@ Crafting <span class="gradient-text">Digital</span><br>
 </div>
 </section>
 
-<section id="stats">
-<div class="stats-grid">
-<div class="stat-item fade-up"><div class="stat-number"><span class="counter" data-target="150">0</span><span class="plus">+</span></div><div class="stat-label">Projects Delivered</div></div>
-<div class="stat-item fade-up delay-1"><div class="stat-number"><span class="counter" data-target="48">0</span><span class="plus">+</span></div><div class="stat-label">Happy Clients</div></div>
-<div class="stat-item fade-up delay-2"><div class="stat-number"><span class="counter" data-target="6">0</span><span class="plus">+</span></div><div class="stat-label">Years Experience</div></div>
-<div class="stat-item fade-up delay-3"><div class="stat-number"><span class="counter" data-target="32">0</span><span class="plus">+</span></div><div class="stat-label">Awards Won</div></div>
-</div>
-</section>
-
 <section id="services">
 <p class="section-label reveal" style="text-align:center">What I Offer</p>
 <h2 class="section-title fade-up" style="text-align:center">Full-Spectrum Design & Development</h2>
@@ -461,19 +474,6 @@ Crafting <span class="gradient-text">Digital</span><br>
 </div>
 </section>
 
-<section id="testimonials">
-<p class="section-label reveal" style="text-align:center">Kind Words</p>
-<h2 class="section-title fade-up" style="text-align:center">What Clients Say</h2>
-<p class="section-subtitle fade-up delay-1" style="margin:0 auto 3rem;text-align:center">The only thing better than creating stunning work is hearing how it makes a difference.</p>
-<div class="testimonials-track" id="testimonialsTrack">
-<div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>"An absolute visionary. The site they built for us didn't just look incredible — it doubled our conversion rate in the first month."</blockquote><div class="author"><div class="avatar">SK</div><div class="info"><div class="name">Sarah Kim</div><div class="role">CEO, Lumina Cosmetics</div></div></div></div>
-<div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>"I gave them a napkin sketch and they returned a masterpiece. The attention to detail is genuinely unmatched."</blockquote><div class="author"><div class="avatar">MR</div><div class="info"><div class="name">Marcus Reed</div><div class="role">Founder, Reed Ventures</div></div></div></div>
-<div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>"Working with this studio redefined what I thought was possible on the web. Our analytics have never looked better."</blockquote><div class="author"><div class="avatar">AL</div><div class="info"><div class="name">Aria Liu</div><div class="role">CTO, Nebula Tech</div></div></div></div>
-<div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>"They don't just build websites — they build experiences. Our users spend 3x longer on the site since the redesign."</blockquote><div class="author"><div class="avatar">JP</div><div class="info"><div class="name">James Park</div><div class="role">Director, Park Creative</div></div></div></div>
-<div class="testimonial-card"><div class="stars">★★★★★</div><blockquote>"Phenomenal work. Fast, communicative, and the end product was beyond anything I'd imagined. Highly recommend."</blockquote><div class="author"><div class="avatar">TW</div><div class="info"><div class="name">Tara Washington</div><div class="role">VP Marketing, Stellar Inc</div></div></div></div>
-</div>
-</section>
-
 <section id="contact">
 <div class="contact-grid">
 <div class="contact-info fade-up">
@@ -494,6 +494,45 @@ Crafting <span class="gradient-text">Digital</span><br>
 </form>
 </div>
 </section>
+
+<div class="modal-overlay" id="modalOverlay">
+<div class="modal">
+<button class="modal-close" id="modalClose">✕</button>
+<div class="modal-preview" id="modalPreview">
+<button class="modal-arrow prev" id="modalPrev">‹</button>
+<button class="modal-arrow next" id="modalNext">›</button>
+<div class="mockup" id="modalMockup">
+<div class="mockup-screen" data-screen="0">
+<span class="ms-icon">✦</span>
+<h4>Landing Page Concept</h4>
+<p>Full-bleed hero with animated gradient overlays and micro-interactions</p>
+</div>
+<div class="mockup-screen" data-screen="1" style="opacity:0;pointer-events:none">
+<span class="ms-icon">◆</span>
+<h4>Dashboard Interface</h4>
+<p>Data-rich analytics panel with real-time charts and collapsible modules</p>
+</div>
+<div class="mockup-screen" data-screen="2" style="opacity:0;pointer-events:none">
+<span class="ms-icon">●</span>
+<h4>Mobile Experience</h4>
+<p>Responsive touch-first navigation with gesture-driven transitions</p>
+</div>
+<div class="mockup-nav" id="mockupNav"></div>
+</div>
+</div>
+<div class="modal-info">
+<div class="mi-left">
+<span class="mi-tag mt-design" id="modalTag">Design</span>
+<h3 id="modalTitle">Nebula Dashboard</h3>
+<span class="mi-desc" id="modalDesc">Data visualization with real-time 3D graphs</span>
+</div>
+<div class="mi-actions">
+<a href="#" class="mi-btn mib-outline">Preview Live ↗</a>
+<button class="mi-btn mib-primary">View Case Study →</button>
+</div>
+</div>
+</div>
+</div>
 
 <footer>
 <div class="footer-links">
@@ -538,10 +577,10 @@ const orb=document.getElementById('glowOrb')
 document.addEventListener('mousemove',e=>{orb.style.left=e.clientX+'px';orb.style.top=e.clientY+'px'})
 
 // TYPEWRITER
-const words=['Experiences','Brands','Visions','Interfaces','Dreams'],el=document.getElementById('typewriterText')
+const words=['Experiences','Brands','Visions','Interfaces','Dreams'],twEl=document.getElementById('twText')
 let wi=0,ci=0,del=false,text=''
-function type(){const w=words[wi];if(!del){text=w.slice(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,2000);el.textContent=text;return}}else{text=w.slice(0,ci-1);ci--;if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,500);el.textContent=text;return}}
-el.textContent=text;setTimeout(type,del?40:80)}
+function type(){const w=words[wi];if(!del){text=w.slice(0,ci+1);ci++;if(ci===w.length){del=true;setTimeout(type,2000);twEl.textContent=text;return}}else{text=w.slice(0,ci-1);ci--;if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(type,500);twEl.textContent=text;return}}
+twEl.textContent=text||'\u200B';setTimeout(type,del?40:80)}
 type()
 
 // SCROLL REVEAL
@@ -552,13 +591,36 @@ document.querySelectorAll('.fade-up,.section-label').forEach(el=>observer.observ
 const skillObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const fill=e.target.querySelector('.bar-fill');if(fill){fill.classList.add('filled')};skillObserver.unobserve(e.target)}})},{threshold:.3})
 document.querySelectorAll('.skill-item').forEach(el=>skillObserver.observe(el))
 
-// COUNTERS
-const counterObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const t=parseInt(e.target.dataset.target),up=()=>{const c=parseInt(e.target.textContent),inc=Math.ceil(t/60);if(c<t){e.target.textContent=Math.min(c+inc,t);requestAnimationFrame(up)}};up();counterObserver.unobserve(e.target)}})},{threshold:.5})
-document.querySelectorAll('.counter').forEach(el=>counterObserver.observe(el))
-
 // 3D TILT
 document.querySelectorAll('.tilt-3d').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,cx=r.width/2,cy=r.height/2;card.style.transform=`perspective(1000px) rotateX(${(y-cy)/20}deg) rotateY(${-(x-cx)/20}deg) scale3d(1.02,1.02,1.02)`})
 card.addEventListener('mouseleave',()=>card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)')})
+
+// SHOWREEL MODAL
+const modalData=[
+{tag:'Design',tagClass:'mt-design',title:'Nebula Dashboard',desc:'Data visualization with real-time 3D graphs',grad:'mp-grad-1',screens:[{icon:'✦',title:'Landing Page Concept',desc:'Full-bleed hero with animated gradient overlays and micro-interactions'},{icon:'◆',title:'Dashboard Interface',desc:'Data-rich analytics panel with real-time charts and collapsible modules'},{icon:'●',title:'Mobile Experience',desc:'Responsive touch-first navigation with gesture-driven transitions'}]},
+{tag:'Development',tagClass:'mt-dev',title:'Quantum E-Commerce',desc:'Headless storefront with sub-second loads',grad:'mp-grad-2',screens:[{icon:'◆',title:'Product Showcase',desc:'Dynamic grid layout with hover-driven 3D product rotations'},{icon:'●',title:'Checkout Flow',desc:'Streamlined multi-step checkout with progress visualization'},{icon:'✦',title:'Admin Panel',desc:'Real-time inventory management with drag-and-drop interface'}]},
+{tag:'Branding',tagClass:'mt-brand',title:'Prism Studios',desc:'Full brand identity & interactive portfolio',grad:'mp-grad-3',screens:[{icon:'●',title:'Brand Guidelines',desc:'Comprehensive design system with typography, color, and component specs'},{icon:'✦',title:'Portfolio Gallery',desc:'Masonry layout with parallax-scrolling project showcases'},{icon:'◆',title:'Interactive Resume',desc:'Scroll-driven narrative timeline with animated skill visualizations'}]},
+{tag:'Design',tagClass:'mt-design',title:'Cosmic Blog',desc:'Content platform with immersive animations',grad:'mp-grad-4',screens:[{icon:'✦',title:'Article Reader',desc:'Distraction-free reading mode with progress-driven animations'},{icon:'●',title:'Category Explorer',desc:'Visual content discovery with animated tag filtering'},{icon:'◆',title:'Author Dashboard',desc:'Analytics-focused dashboard with content performance metrics'}]},
+{tag:'Development',tagClass:'mt-dev',title:'Velocity SaaS',desc:'Web app with real-time collaboration',grad:'mp-grad-5',screens:[{icon:'◆',title:'Workspace View',desc:'Real-time collaborative editing with presence indicators'},{icon:'✦',title:'Project Timeline',desc:'Gantt-style project management with drag-to-schedule'},{icon:'●',title:'Team Chat',desc:'Threaded conversations with inline code snippets and file sharing'}]},
+{tag:'Branding',tagClass:'mt-brand',title:'Solstice Agency',desc:'Premium agency website with 3D elements',grad:'mp-grad-6',screens:[{icon:'●',title:'Home Page',desc:'Immersive WebGL hero with interactive 3D brand storytelling'},{icon:'◆',title:'Case Studies',desc:'Rich media document with scroll-triggered data visualizations'},{icon:'✦',title:'Contact Page',desc:'Interactive map with animated form transitions and 3D elements'}]}
+]
+const modalOverlay=document.getElementById('modalOverlay'),modalClose=document.getElementById('modalClose'),modalPreview=document.getElementById('modalPreview'),modalMockup=document.getElementById('modalMockup'),mockupNav=document.getElementById('mockupNav'),modalTag=document.getElementById('modalTag'),modalTitle=document.getElementById('modalTitle'),modalDesc=document.getElementById('modalDesc'),modalPrev=document.getElementById('modalPrev'),modalNext=document.getElementById('modalNext')
+let curProject=0,curScreen=0
+function openModal(idx){curProject=idx;curScreen=0;renderModal();modalOverlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow=''}
+function renderModal(){const d=modalData[curProject];modalTag.textContent=d.tag;modalTag.className='mi-tag '+d.tagClass;modalTitle.textContent=d.title;modalDesc.textContent=d.desc;modalPreview.className='modal-preview '+d.grad;const screens=d.screens
+mockupNav.innerHTML=screens.map((_,i)=>`<button class="dot${i===0?' active':''}" data-idx="${i}"></button>`).join('')
+document.querySelectorAll('.mockup-screen').forEach((el,i)=>{el.style.opacity=i===0?'1':'0';el.style.pointerEvents=i===0?'auto':'none';el.querySelector('.ms-icon').textContent=screens[i].icon;el.querySelector('h4').textContent=screens[i].title;el.querySelector('p').textContent=screens[i].desc})
+mockupNav.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',()=>goToScreen(parseInt(d.dataset.idx))))}
+function goToScreen(i){if(i===curScreen)return;const d=modalData[curProject];const prev=curScreen;curScreen=i
+document.querySelectorAll('.mockup-screen').forEach((el,j)=>{el.style.opacity=j===i?'1':'0';el.style.pointerEvents=j===i?'auto':'none';el.style.transform=j===i?'translateY(0) scale(1)':'translateY(20px) scale(.98)'})
+document.querySelectorAll('.mockup-nav .dot').forEach((d,j)=>d.classList.toggle('active',j===i))}
+modalPrev.addEventListener('click',()=>{const d=modalData[curProject];goToScreen((curScreen-1+d.screens.length)%d.screens.length)})
+modalNext.addEventListener('click',()=>{const d=modalData[curProject];goToScreen((curScreen+1)%d.screens.length)})
+modalClose.addEventListener('click',closeModal)
+modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal()})
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(e.key==='ArrowRight'){const d=modalData[curProject];if(d)goToScreen((curScreen+1)%d.screens.length)};if(e.key==='ArrowLeft'){const d=modalData[curProject];if(d)goToScreen((curScreen-1+d.screens.length)%d.screens.length)}})
+document.querySelectorAll('.showreel-card').forEach((card,i)=>{card.addEventListener('click',()=>openModal(i))})
 
 // NAV HIDE/SHOW ON SCROLL
 let lastScroll=0;const nav=document.getElementById('nav')
@@ -568,11 +630,6 @@ window.addEventListener('scroll',()=>{const cur=window.scrollY;nav.classList.tog
 const toggle=document.getElementById('mobileToggle'),overlay=document.getElementById('mobileOverlay')
 toggle.addEventListener('click',()=>{const o=overlay.classList.toggle('open');toggle.classList.toggle('active')})
 document.querySelectorAll('.mo-link').forEach(l=>l.addEventListener('click',()=>{overlay.classList.remove('open');toggle.classList.remove('active')}))
-
-// TESTIMONIALS AUTO SCROLL
-const track=document.getElementById('testimonialsTrack');let scrollInterval
-function startScroll(){scrollInterval=setInterval(()=>{if(!track.matches(':hover')){track.scrollBy({left:420,behavior:'smooth'});if(track.scrollLeft+track.clientWidth>=track.scrollWidth)track.scrollTo({left:0,behavior:'smooth'})}},4000)}
-startScroll()
 
 // FORM
 document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const btn=e.target.querySelector('.btn');const orig=btn.textContent;btn.textContent='Sent! ✦';btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';setTimeout(()=>{btn.textContent=orig;btn.style.background='';e.target.reset()},2500)})
