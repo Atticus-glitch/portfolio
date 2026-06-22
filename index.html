@@ -323,13 +323,7 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .contact-link{display:flex;align-items:center;gap:.8rem;color:rgba(226,232,240,.7);text-decoration:none;font-size:.9rem;transition:color .3s,transform .3s;padding:.6rem 0}
 .contact-link:hover{color:#fff;transform:translateX(6px)}
 .contact-link .cl-icon{width:38px;height:38px;border-radius:10px;background:rgba(168,85,247,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.contact-form{display:flex;flex-direction:column;gap:1rem}
-.contact-form input,.contact-form textarea{padding:1rem 1.2rem;border-radius:12px;border:1.5px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:#e2e8f0;font-family:'Space Grotesk',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s,box-shadow .3s}
-.contact-form input:focus,.contact-form textarea:focus{border-color:#a855f7;box-shadow:0 0 0 3px rgba(168,85,247,.15)}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(226,232,240,.25)}
-.contact-form textarea{min-height:140px;resize:vertical}
-.contact-form .btn{width:100%;justify-content:center;padding:1rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
 
 /* FOOTER */
 footer{position:relative;z-index:1;padding:2rem 3rem;text-align:center;border-top:1px solid rgba(255,255,255,.04);background:rgba(15,15,26,.8);backdrop-filter:blur(10px)}
@@ -379,7 +373,6 @@ section{padding:3rem 1.2rem}
 .showreel-grid{grid-template-columns:1fr}
 .skills-grid{grid-template-columns:1fr}
 .services-grid{grid-template-columns:1fr}
-.contact-form input,.contact-form textarea{font-size:16px}
 .hero-shape{width:200px;height:200px}
 .hero-visual{min-height:200px}
 .floating-cards .fc{width:36px;height:36px;font-size:.9rem}
@@ -591,12 +584,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 <a href="mailto:atticus.a@zohomail.com" class="contact-link"><span class="cl-icon">✉</span> atticus.a@zohomail.com</a>
 </div>
 </div>
-<form class="contact-form fade-up delay-2" id="contactForm">
-<div class="form-row"><input type="text" placeholder="Your Name" required><input type="email" placeholder="Email Address" required></div>
-<input type="text" placeholder="Project Type (e.g. E-Commerce, Portfolio...)" required>
-<textarea placeholder="Tell me about your vision..." required></textarea>
-<button type="submit" class="btn btn-primary">Send Message ✦</button>
-</form>
+
 </div>
 </section>
 
@@ -867,8 +855,7 @@ const toggle=document.getElementById('mobileToggle'),overlay=document.getElement
 toggle.addEventListener('click',()=>{const o=overlay.classList.toggle('open');toggle.classList.toggle('active')})
 document.querySelectorAll('.mo-link').forEach(l=>l.addEventListener('click',()=>{overlay.classList.remove('open');toggle.classList.remove('active')}))
 
-// FORM
-document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const btn=e.target.querySelector('.btn');const orig=btn.textContent;btn.textContent='Sent! ✦';btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';setTimeout(()=>{btn.textContent=orig;btn.style.background='';e.target.reset()},2500)})
+
 </script>
 </body>
 </html>
