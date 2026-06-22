@@ -375,6 +375,19 @@ section{padding:4rem 1.5rem}
 }
 @media(max-width:480px){
 .hero-title{font-size:2.2rem}
+section{padding:3rem 1.2rem}
+.showreel-grid{grid-template-columns:1fr}
+.skills-grid{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.contact-form input,.contact-form textarea{font-size:16px}
+.hero-shape{width:200px;height:200px}
+.hero-visual{min-height:200px}
+.floating-cards .fc{width:36px;height:36px;font-size:.9rem}
+footer{padding:1.5rem}
+}
+@media(pointer:coarse){
+.cursor-dot,.cursor-ring{display:none}
+body{cursor:auto}
 }
 </style>
 </head>
@@ -631,12 +644,13 @@ Crafting <span class="gradient-text">Digital</span><br>
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),600)})
 
 // CURSOR
+if(!window.matchMedia('(pointer:coarse)').matches){
 const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing')
 let mx=0,my=0,ringX=0,ringY=0
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'})
 function ringFollow(){ringX+=(mx-ringX)*.12;ringY+=(my-ringY)*.12;ring.style.left=ringX+'px';ring.style.top=ringY+'px';requestAnimationFrame(ringFollow)}
 ringFollow()
-document.querySelectorAll('a,button,.showreel-card,.service-card,.skill-item,.btn,.fc').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))})
+document.querySelectorAll('a,button,.showreel-card,.service-card,.skill-item,.btn,.fc').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))})}
 
 // PARTICLES
 const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d')
@@ -677,6 +691,7 @@ const skillObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.
 document.querySelectorAll('.skill-item').forEach(el=>skillObserver.observe(el))
 
 // 3D TILT
+if(!window.matchMedia('(pointer:coarse)').matches)
 document.querySelectorAll('.tilt-3d').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,cx=r.width/2,cy=r.height/2;card.style.transform=`perspective(1000px) rotateX(${(y-cy)/20}deg) rotateY(${-(x-cx)/20}deg) scale3d(1.02,1.02,1.02)`})
 card.addEventListener('mouseleave',()=>card.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)')})
 
