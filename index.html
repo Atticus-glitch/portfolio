@@ -28,7 +28,7 @@ body{font-family:'Space Grotesk',sans-serif;background:#0f0f1a;color:#e2e8f0;ove
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* PARTICLES */
-#particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+#particles-canvas{position:fixed;inset:0;z-index:50;pointer-events:none}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:50000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(15,15,26,.6);backdrop-filter:blur(20px) saturate(1.8);-webkit-backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid rgba(168,85,247,.1);transition:transform .4s,background .4s}
@@ -105,7 +105,7 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .fade-up.delay-5{transition-delay:.5s}
 
 /* SHOWREEL */
-#showreel{background:linear-gradient(180deg,transparent 0%,transparent 6%,#0a0a14 10%,#0a0a14 90%,transparent 94%,transparent 100%);position:relative;overflow:hidden}
+#showreel{background:linear-gradient(180deg,#0f0f1a 0%,#0a0a14 40%,#0a0a14 60%,#0f0f1a 100%);position:relative;overflow:hidden}
 #showreel::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(168,85,247,.04),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(59,130,246,.04),transparent 60%);pointer-events:none}
 .showreel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1400px;margin:0 auto;width:100%}
 .showreel-card{position:relative;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s;cursor:pointer;aspect-ratio:4/3;display:flex;align-items:flex-end;padding:1.5rem}
@@ -281,7 +281,7 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 }
 
 /* SKILLS */
-#skills{background:linear-gradient(180deg,transparent 0%,transparent 6%,#0f0f1a 10%,#0f0f1a 90%,transparent 94%,transparent 100%);position:relative}
+#skills{position:relative}
 #skills::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,.3),transparent)}
 .skills-header{text-align:center;max-width:700px;margin:0 auto 4rem}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;max-width:1000px;margin:0 auto;width:100%}
@@ -296,7 +296,7 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .skill-item .bar-fill.filled{width:var(--level)}.skill-item .pct{font-size:.7rem;color:var(--glow-color);position:relative;z-index:1;font-family:'JetBrains Mono',monospace}
 
 /* SERVICES */
-#services{background:linear-gradient(180deg,transparent 0%,transparent 6%,#0f0f1a 10%,#0f0f1a 90%,transparent 94%,transparent 100%);position:relative;overflow:hidden}
+#services{position:relative;overflow:hidden}
 #services::before{content:'';position:absolute;top:-30%;right:-20%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(168,85,247,.05),transparent 70%);pointer-events:none}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1400px;margin:0 auto;width:100%}
 .service-card{position:relative;padding:2.5rem 2rem;border-radius:20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all .5s cubic-bezier(.22,1,.36,1);overflow:hidden}
@@ -310,7 +310,7 @@ section{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction
 .service-card:hover .corner{background:rgba(168,85,247,.25);transform:rotate(45deg)}
 
 /* CONTACT */
-#contact{background:linear-gradient(180deg,transparent 0%,transparent 6%,#0f0f1a 10%,#0f0f1a 90%,transparent 94%,transparent 100%);position:relative;overflow:hidden}
+#contact{position:relative;overflow:hidden}
 #contact::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,85,247,.3),transparent)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;width:100%}
 .contact-info h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;margin-bottom:1.2rem}
