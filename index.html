@@ -377,6 +377,7 @@ section{padding:4rem 1.5rem}
 <body>
 
 <div id="loader"><div class="loader-ring"></div></div>
+<script>setTimeout(()=>{const l=document.getElementById('loader');if(l)l.classList.add('done')},2500)</script>
 <canvas id="particles-canvas"></canvas>
 <div class="glow-orb" id="glowOrb"></div>
 <div class="cursor-dot" id="cursorDot"></div>
@@ -630,9 +631,7 @@ Crafting <span class="gradient-text">Digital</span><br>
 </footer>
 
 <script>
-// LOADER
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),600)})
-setTimeout(()=>{const l=document.getElementById('loader');if(l&&!l.classList.contains('done'))l.classList.add('done')},5000)
+// LOADER (handled by inline script above; main page init below)
 
 // CURSOR
 const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing')
