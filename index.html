@@ -607,8 +607,6 @@ Crafting <span class="gradient-text">Digital</span><br>
 </div>
 <div class="mib-actions">
 <span class="mib-counter" id="mibCounter">1/6</span>
-<button class="mib-btn mib-outline" onclick="msStartTour()">Next Project ►</button>
-<button class="mib-btn mib-primary" onclick="window.open(getPageURL(projData[curProject]),'_blank')">Open in New Tab ✦</button>
 </div>
 </div>
 </div>
@@ -830,7 +828,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 const modalOverlay=document.getElementById('modalOverlay'),modalClose=document.getElementById('modalClose'),miniSite=document.getElementById('miniSite'),miniScroll=document.getElementById('miniSiteScroll'),mibTag=document.getElementById('mibTag'),mibTitle=document.getElementById('mibTitle'),mibDesc=document.getElementById('mibDesc'),mibCounter=document.getElementById('mibCounter'),modalPrev=document.getElementById('modalPrev'),modalNext=document.getElementById('modalNext')
 let curProject=0
 function msToast(msg){const el=document.getElementById('msToast'),txt=document.getElementById('msToastText');txt.textContent=msg;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),3000)}
-function msStartTour(){modalNext.click()}
 function getPageURL(d){if(d.url)return d.url;if(d.pageHTML){const b=new Blob([d.pageHTML],{type:'text/html'});return URL.createObjectURL(b)}return''}
 function openModal(idx){curProject=idx;const d=projData[curProject];mibTag.textContent=d.tag;mibTag.className='mib-tag '+d.tagClass;mibTitle.textContent=d.title;mibDesc.textContent=d.desc;mibCounter.textContent=(curProject+1)+'/'+projData.length;const url=getPageURL(d);if(url){miniSite.innerHTML=`<iframe src="${url}" style="width:100%;height:100%;border:none;display:block" title="${d.title}" loading="lazy"></iframe>`;miniScroll.style.overflow='hidden'}modalOverlay.classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){modalOverlay.classList.remove('open');document.body.style.overflow='';miniScroll.style.overflow=''}
